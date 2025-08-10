@@ -1,0 +1,28 @@
+{
+  "name": "nerulyrics-auto-commit",
+  "version": "1.0.0",
+  "description": "Auto-commit configuration for NerU Lyrics project",
+  "main": "scripts/smart-commit.js",
+  "scripts": {
+    "commit": "node scripts/smart-commit.js --commit",
+    "commit-push": "node scripts/smart-commit.js --commit --push",
+    "auto-commit": "bash scripts/auto-commit.sh",
+    "auto-commit-push": "bash scripts/auto-commit.sh --push",
+    "setup-hooks": "bash scripts/install-hooks.sh",
+    "quick-commit": "git add . && npm run commit",
+    "smart-message": "node scripts/smart-commit.js"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "commit-msg": "node scripts/validate-commit-msg.js"
+    }
+  },
+  "commitizen": {
+    "path": "./scripts/cz-adapter.js"
+  },
+  "devDependencies": {
+    "husky": "^8.0.3",
+    "commitizen": "^4.3.0"
+  }
+}
